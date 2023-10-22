@@ -1,0 +1,10 @@
+@startuml
+
+User->Système : demande à annuler un cancel
+alt Un cancel vient d'avoir lieu 
+Système -> Système : annule le cancel
+end
+
+
+
+@enduml
