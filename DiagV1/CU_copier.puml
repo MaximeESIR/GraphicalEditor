@@ -1,0 +1,10 @@
+@startuml
+
+User->Système : demande de copier 
+alt texte sélectionné
+Système -> Système : copie des caractères 
+end
+
+
+
+@enduml

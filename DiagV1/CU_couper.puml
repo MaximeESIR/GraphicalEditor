@@ -1,0 +1,12 @@
+@startuml
+
+User->Système : demande de couper
+
+alt texte sélectionné
+Système -> Système : copie des caractères et les efface
+Système -> Système : place le curseur à l'endroit où était le texte
+
+end
+
+
+@enduml
