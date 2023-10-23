@@ -1,0 +1,14 @@
+@startuml
+
+User->Système : donne un caractère à écrire
+
+alt texte sélectionné
+Système -> Système : supprime le texte sélectionné
+Système -> Système : place le curseur à l'endroit où était le texte
+
+end
+
+Système -> Système : écrit le caractère à la position du curseur
+
+
+@enduml

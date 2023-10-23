@@ -1,0 +1,90 @@
+@startuml
+
+class System {
+    SDL_KeyCode[] m_events
+    bool m_demandToQuit;
+
+    void updateEvents()
+    void printDocument()
+    void loop();
+    void executeAllCommands();
+}
+
+class File {
+    String m_text
+    String m_buffer
+    int m_cursor
+    int m_sizeOfSelection
+    void copySelectionInBuffer()
+    void writeContent(const char& content)
+    std::string& getText()
+    void setCursor(int number);
+     int getCursor()
+     void setSizeOfSelection(int newSize)
+    int getSizeOfSelection()
+    std::string getSelection()
+	void pasteBuffer();
+    int sizeOfBuffer()
+
+}
+System "1" *-- "file, 1" File
+
+
+abstract class Command{
+    SDL_KeyCode[] m_preconditions
+    static File* m_file
+    bool checkPreconditions()
+    void execute()
+    static void linkFile(File file)
+}
+File "1" -- "1" Command
+System "1" *- "n,m_commands" Command
+
+
+
+class Select{
+    void execute()
+}
+Command <|--- Select
+
+
+class Copy{
+    void execute()
+}
+
+
+
+class Paste{
+    void execute()
+}
+Command <|--- Paste
+Command <|--- Copy
+
+class Cut{
+    void execute()
+}
+Command <|--- Cut
+
+
+class MoveCursor{
+    void execute()
+}
+Command <|--- MoveCursor
+
+
+class Write{
+    bool checkPreconditions()
+    void execute()
+}
+Command <|--- Write
+
+
+class Remove{
+    void execute()
+}
+Command <|--- Remove
+
+
+
+
+@enduml

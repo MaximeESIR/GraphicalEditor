@@ -1,0 +1,59 @@
+@startuml
+
+actor User as U
+participant "system:System" as S
+participant "paste:Paste" as C
+participant "file:File" as F
+activate S
+
+loop while we don't want to quit
+
+alt
+U -> S : enter a key event
+else
+U -> S : demand to quit
+end
+
+S -> S : update all events
+activate S
+deactivate S
+
+S -> S : execute all commands
+activate S
+
+S -> C : execute()
+activate C
+C -> C : checkPreconditions()
+activate C
+C -> S : vérifie les evenements \nactifs
+activate S
+deactivate S
+
+deactivate C
+alt valid preconditions
+alt Caractères sélectionnés
+C -> F : deletion()
+activate F
+deactivate F
+
+end
+
+C -> F : pasteBuffer()
+activate F
+deactivate F
+deactivate C
+
+end
+deactivate S
+
+S -> S : print the document
+activate S
+
+S -> F : getContent()
+
+S --> U : show file content
+deactivate S
+
+end
+
+@enduml

@@ -1,0 +1,10 @@
+@startuml
+
+User->Système : repositionne le curseur
+
+alt texte sélectionné
+
+Système->Système : désélectionne le texte
+end
+
+@enduml

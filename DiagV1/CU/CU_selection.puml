@@ -1,0 +1,10 @@
+@startuml
+
+User->Système : demande à selectionner du texte
+alt texte sélectionné
+
+Système->Système : désélectionne le texte
+end
+
+Système->Système : sélectionne le nouveau texte
+@enduml
